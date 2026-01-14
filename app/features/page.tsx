@@ -167,14 +167,20 @@ const FeaturesPage = () => {
                                 ))}
                             </div>
 
-                            <Link href="#download-app">
+                            <a
+                                href="#download-app"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('download-app')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
                                 <button
-                                    className="px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"
+                                    className="px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-lg"
                                     style={{ backgroundColor: feature.color, color: '#000' }}
                                 >
                                     Learn More
                                 </button>
-                            </Link>
+                            </a>
                         </motion.div>
 
                         {/* Phone Mockup */}

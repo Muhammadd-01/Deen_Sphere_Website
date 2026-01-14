@@ -21,23 +21,8 @@ const FloatingButtons = () => {
     }
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-            {/* Scroll to Top Button */}
-            <AnimatePresence>
-                {showScrollTop && (
-                    <motion.button
-                        initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 20, scale: 0.8 }}
-                        onClick={scrollToTop}
-                        className="w-12 h-12 bg-[#1C1C1C] border border-[#2A2A2A] rounded-full flex items-center justify-center text-white hover:border-[#F5B400] hover:text-[#F5B400] transition-all shadow-lg"
-                    >
-                        <ArrowUp size={20} />
-                    </motion.button>
-                )}
-            </AnimatePresence>
-
-            {/* WhatsApp Button */}
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+            {/* WhatsApp Button - Always visible, moves up when scroll-top appears */}
             <motion.a
                 href="https://wa.me/1234567890"
                 target="_blank"
@@ -45,7 +30,7 @@ const FloatingButtons = () => {
                 initial={{ scale: 0 }}
                 animate={{
                     scale: 1,
-                    y: showScrollTop ? 0 : 0
+                    y: showScrollTop ? -10 : 0
                 }}
                 transition={{
                     type: "spring",
@@ -54,11 +39,27 @@ const FloatingButtons = () => {
                 }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-[#25D366]/50"
+                className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-[#25D366]/50 transition-shadow"
                 title="Chat on WhatsApp"
             >
                 <MessageCircle size={24} fill="white" />
             </motion.a>
+
+            {/* Scroll to Top Button - Below WhatsApp, appears on scroll */}
+            <AnimatePresence>
+                {showScrollTop && (
+                    <motion.button
+                        initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.8 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                        onClick={scrollToTop}
+                        className="w-12 h-12 bg-[#F5B400] rounded-full flex items-center justify-center text-black hover:bg-[#FFD84D] transition-all shadow-lg hover:shadow-[#F5B400]/50"
+                    >
+                        <ArrowUp size={20} />
+                    </motion.button>
+                )}
+            </AnimatePresence>
         </div>
     )
 }

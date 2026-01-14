@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Star, BookOpen, MessageCircle, Video } from "lucide-react"
+import { Star, Video } from "lucide-react"
 
 const SpeakersPage = () => {
     const speakers = [
@@ -85,16 +85,17 @@ const SpeakersPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="bg-[#141414] rounded-2xl border border-[#2A2A2A] overflow-hidden hover:border-[#F5B400]/50 transition-all group"
+                        whileHover={{ y: -10, scale: 1.02 }}
+                        className="bg-[#141414] rounded-2xl border border-[#2A2A2A] overflow-hidden hover:border-[#F5B400]/50 transition-all group cursor-pointer"
                     >
                         {/* Avatar */}
-                        <div className="h-40 bg-gradient-to-br from-[#F5B400]/20 to-[#1C1C1C] flex items-center justify-center">
-                            <span className="text-7xl">{speaker.image}</span>
+                        <div className="h-40 bg-gradient-to-br from-[#F5B400]/20 to-[#1C1C1C] flex items-center justify-center group-hover:from-[#F5B400]/30 transition-all">
+                            <span className="text-7xl group-hover:scale-110 transition-transform">{speaker.image}</span>
                         </div>
 
                         <div className="p-6">
                             {/* Name & Specialty */}
-                            <h3 className="text-xl font-bold text-white mb-1">{speaker.name}</h3>
+                            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#F5B400] transition-colors">{speaker.name}</h3>
                             <p className="text-[#F5B400] text-sm mb-3">{speaker.specialty}</p>
 
                             {/* Rating */}
@@ -110,17 +111,11 @@ const SpeakersPage = () => {
                             {/* Bio */}
                             <p className="text-[#B3B3B3] text-sm mb-4">{speaker.bio}</p>
 
-                            {/* Actions */}
-                            <div className="flex gap-3">
-                                <button className="flex-1 py-2 bg-[#1C1C1C] border border-[#2A2A2A] rounded-lg text-white text-sm hover:border-[#F5B400] transition-all flex items-center justify-center gap-2">
-                                    <MessageCircle size={16} />
-                                    Chat
-                                </button>
-                                <button className="flex-1 py-2 gradient-gold rounded-lg text-black text-sm font-semibold flex items-center justify-center gap-2">
-                                    <Video size={16} />
-                                    Book
-                                </button>
-                            </div>
+                            {/* Book Button Only */}
+                            <button className="w-full py-3 gradient-gold rounded-lg text-black font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[#F5B400]/30 transition-all">
+                                <Video size={18} />
+                                Book Speaker
+                            </button>
                         </div>
                     </motion.div>
                 ))}
@@ -128,18 +123,18 @@ const SpeakersPage = () => {
 
             {/* CTA */}
             <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="max-w-4xl mx-auto text-center"
             >
-                <div className="bg-[#141414] rounded-2xl border border-[#2A2A2A] p-8">
-                    <BookOpen size={48} className="text-[#F5B400] mx-auto mb-4" />
+                <div className="bg-gradient-to-r from-[#141414] to-[#1C1C1C] rounded-2xl border border-[#F5B400]/30 p-8 hover:border-[#F5B400]/50 transition-all">
+                    <div className="text-5xl mb-4">🎤</div>
                     <h3 className="text-2xl font-bold text-white mb-3">Become a Speaker</h3>
                     <p className="text-[#B3B3B3] mb-6">
                         Are you a qualified Islamic scholar? Join our platform and share your knowledge with millions.
                     </p>
-                    <button className="px-8 py-3 gradient-gold text-black font-bold rounded-lg hover:scale-105 transition-all">
+                    <button className="px-8 py-3 gradient-gold text-black font-bold rounded-lg hover:scale-105 hover:shadow-lg hover:shadow-[#F5B400]/30 transition-all">
                         Apply Now
                     </button>
                 </div>

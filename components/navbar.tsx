@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-14 h-14 group-hover:scale-110 transition-transform duration-300">
+            <div className="relative w-16 h-16 group-hover:scale-110 transition-transform duration-300">
               <Image
                 src="/logo.png"
                 alt="DeenSphere Logo"
