@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Mail, ArrowRight, Zap, CheckCircle, Sparkles, PartyPopper } from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
+import { useLanguage } from "@/context/language-context"
 
 // Confetti particle component
 const ConfettiParticle = ({ delay, x }: { delay: number; x: number }) => (
@@ -32,6 +33,7 @@ const ConfettiParticle = ({ delay, x }: { delay: number; x: number }) => (
 )
 
 const CTA = () => {
+  const { t } = useLanguage()
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [submitted, setSubmitted] = useState(false)
@@ -77,21 +79,21 @@ const CTA = () => {
               whileHover={{ scale: 1.05 }}
             >
               <Sparkles size={16} className="text-[#F5B400]" />
-              <span className="text-[#FFD84D] text-sm font-medium">🚀 Early Access</span>
+              <span className="text-[#FFD84D] text-sm font-medium">{t("cta.badge")}</span>
             </motion.div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Join <span className="text-gradient">DeenSphere</span>?
+              {t("cta.title").split("DeenSphere")[0]} <span className="text-gradient">DeenSphere</span>{t("cta.title").split("DeenSphere")[1]}
             </h2>
             <p className="text-lg text-[#B3B3B3] mb-8">
-              Be among the first to access our platform. Sign up for early access and get exclusive updates about our mobile app launch.
+              {t("cta.description")}
             </p>
 
             {/* Features list */}
             <div className="space-y-3 mb-8">
               {[
-                { text: "Early access to all features", color: "#F5B400" },
-                { text: "Exclusive community membership", color: "#10B981" },
-                { text: "Direct connection with scholars", color: "#3B82F6" }
+                { text: t("cta.feature1"), color: "#F5B400" },
+                { text: t("cta.feature2"), color: "#10B981" },
+                { text: t("cta.feature3"), color: "#3B82F6" }
               ].map((feature, i) => (
                 <motion.div
                   key={i}
@@ -139,38 +141,38 @@ const CTA = () => {
                     <Image src="/logo.png" alt="DeenSphere" fill className="object-contain" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Get Notified</h3>
-                    <p className="text-[#888] text-sm">Join 10,000+ waiting</p>
+                    <h3 className="text-xl font-bold text-white">{t("cta.form.title")}</h3>
+                    <p className="text-[#888] text-sm">{t("cta.form.waitlist")}</p>
                   </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label htmlFor="cta-name" className="block text-sm font-medium text-white mb-2">
-                      Your Name
+                      {t("cta.form.name")}
                     </label>
                     <input
                       type="text"
                       id="cta-name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Enter your name"
+                      placeholder={t("cta.form.placeholder.name")}
                       required
-                      className="w-full px-4 py-3 bg-[#141414]/80 border border-[#2A2A2A] rounded-lg text-white placeholder-[#666] focus:outline-none focus:border-[#F5B400] focus:shadow-lg focus:shadow-[#F5B400]/10 transition-all"
+                      className="w-full px-4 py-3 bg-[#141414]/80 border border-[#2A2A2A] rounded-lg text-white placeholder-[#666] focus:outline-none focus:border-[#F5B400] focus:shadow-lg focus:shadow-[#F5B400]/10 transition-all font-sans"
                     />
                   </div>
                   <div>
                     <label htmlFor="cta-email" className="block text-sm font-medium text-white mb-2">
-                      Email Address
+                      {t("cta.form.email")}
                     </label>
                     <input
                       type="email"
                       id="cta-email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your@email.com"
+                      placeholder={t("cta.form.placeholder.email")}
                       required
-                      className="w-full px-4 py-3 bg-[#141414]/80 border border-[#2A2A2A] rounded-lg text-white placeholder-[#666] focus:outline-none focus:border-[#F5B400] focus:shadow-lg focus:shadow-[#F5B400]/10 transition-all"
+                      className="w-full px-4 py-3 bg-[#141414]/80 border border-[#2A2A2A] rounded-lg text-white placeholder-[#666] focus:outline-none focus:border-[#F5B400] focus:shadow-lg focus:shadow-[#F5B400]/10 transition-all font-sans"
                     />
                   </div>
                   <div className="relative">
@@ -194,13 +196,13 @@ const CTA = () => {
                             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                             className="w-5 h-5 border-2 border-black border-t-transparent rounded-full"
                           />
-                          Joining...
+                          {t("cta.form.btn.joining")}
                         </>
                       ) : (
                         <>
                           <Zap size={20} />
-                          Get Notified
-                          <ArrowRight size={20} />
+                          {t("cta.form.btn")}
+                          <ArrowRight size={20} className="rtl:rotate-180" />
                         </>
                       )}
                     </motion.button>
@@ -212,7 +214,7 @@ const CTA = () => {
                 </form>
 
                 <p className="text-[#666] text-xs text-center mt-4">
-                  We respect your privacy. No spam, ever.
+                  {t("cta.form.privacy")}
                 </p>
               </>
             ) : (
@@ -228,14 +230,14 @@ const CTA = () => {
                 >
                   <PartyPopper size={40} className="text-emerald-500" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-white mb-2">You're on the list! 🎉</h3>
-                <p className="text-[#B3B3B3]">We'll notify you when DeenSphere launches.</p>
+                <h3 className="text-2xl font-bold text-white mb-2">{t("cta.success.title")}</h3>
+                <p className="text-[#B3B3B3]">{t("cta.success.desc")}</p>
               </motion.div>
             )}
           </motion.div>
         </div>
       </div>
-    </section>
+    </section >
   )
 }
 

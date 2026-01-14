@@ -2,15 +2,17 @@
 
 import { motion } from "framer-motion"
 import { Heart, DollarSign, Users, CreditCard, Smartphone, QrCode, Shield, Sparkles } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 const Donations = () => {
+    const { t } = useLanguage()
     const amounts = [10, 25, 50, 100, 250, 500]
 
     return (
         <section className="py-20 px-4 bg-transparent relative">
             {/* Color accent gradients */}
-            <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-r from-rose-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-l from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-r from-rose-500/10 to-transparent rounded-full blur-3xl pointer-events-none will-change-[transform,opacity]" />
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-l from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none will-change-[transform,opacity]" />
 
             <div className="max-w-6xl mx-auto relative z-10">
                 <motion.div
@@ -24,14 +26,13 @@ const Donations = () => {
                         whileHover={{ scale: 1.05 }}
                     >
                         <Sparkles className="text-[#F5B400]" size={16} />
-                        <span className="text-[#F5B400] text-sm font-medium">Support the Cause</span>
+                        <span className="text-[#F5B400] text-sm font-medium">{t("donations.badge")}</span>
                     </motion.div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                        Help Us Spread <span className="text-gradient">Knowledge</span>
+                        {t("donations.title")} <span className="text-gradient">{t("donations.title_highlight")}</span>
                     </h2>
                     <p className="text-[#B3B3B3] text-lg max-w-3xl mx-auto">
-                        Your donations help us provide free Islamic education, connect people with scholars,
-                        and build a stronger global Muslim community.
+                        {t("donations.subtitle")}
                     </p>
                 </motion.div>
 
@@ -41,16 +42,16 @@ const Donations = () => {
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="bg-[#1C1C1C]/70 backdrop-blur-md p-8 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all"
+                        className="bg-[#1C1C1C]/70 backdrop-blur-md p-8 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all will-change-transform"
                     >
                         <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <Heart className="text-[#F5B400]" />
-                            Make a Donation
+                            {t("donations.form.title")}
                         </h3>
 
                         {/* Amount Selection */}
                         <div className="mb-6">
-                            <label className="text-white text-sm font-medium mb-3 block">Select Amount (USD)</label>
+                            <label className="text-white text-sm font-medium mb-3 block">{t("donations.form.select_amount")}</label>
                             <div className="grid grid-cols-3 gap-3">
                                 {amounts.map((amount) => (
                                     <motion.button
@@ -67,7 +68,7 @@ const Donations = () => {
 
                         {/* Custom Amount */}
                         <div className="mb-6">
-                            <label className="text-white text-sm font-medium mb-2 block">Or Enter Custom Amount</label>
+                            <label className="text-white text-sm font-medium mb-2 block">{t("donations.form.custom_amount")}</label>
                             <div className="relative">
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#F5B400] font-bold">$</span>
                                 <input
@@ -81,10 +82,10 @@ const Donations = () => {
                         {/* Donation Type */}
                         <div className="flex gap-3 mb-6">
                             <button className="flex-1 py-3 gradient-gold text-black font-bold rounded-lg">
-                                One-Time
+                                {t("donations.form.one_time")}
                             </button>
                             <button className="flex-1 py-3 bg-[#141414] border border-[#2A2A2A] rounded-lg text-white font-bold hover:border-[#F5B400] transition-all">
-                                Monthly
+                                {t("donations.form.monthly")}
                             </button>
                         </div>
 
@@ -95,18 +96,18 @@ const Donations = () => {
                             className="w-full py-4 gradient-gold text-black font-bold rounded-lg flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[#F5B400]/30 transition-all"
                         >
                             <CreditCard size={20} />
-                            Donate Now
+                            {t("donations.form.btn")}
                         </motion.button>
 
                         {/* Trust Badges */}
                         <div className="flex items-center justify-center gap-6 mt-6 text-[#888] text-xs">
                             <div className="flex items-center gap-1">
                                 <Shield size={14} className="text-emerald-500" />
-                                Secure Payment
+                                {t("donations.form.secure")}
                             </div>
                             <div className="flex items-center gap-1">
                                 <Heart size={14} className="text-rose-500" />
-                                100% Goes to Cause
+                                {t("donations.form.transparent")}
                             </div>
                         </div>
                     </motion.div>
@@ -116,13 +117,13 @@ const Donations = () => {
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="space-y-6"
+                        className="space-y-6 will-change-transform"
                     >
                         {/* QR Code */}
-                        <div className="bg-[#1C1C1C]/70 backdrop-blur-md p-8 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all text-center">
+                        <div className="bg-[#1C1C1C]/70 backdrop-blur-md p-8 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all text-center will-change-transform">
                             <h3 className="text-xl font-bold text-white mb-4 flex items-center justify-center gap-2">
                                 <QrCode className="text-[#F5B400]" />
-                                Scan to Donate
+                                {t("donations.qr.title")}
                             </h3>
                             <div className="inline-block p-4 bg-white rounded-xl mb-4 shadow-lg">
                                 {/* Dummy QR Code Pattern */}
@@ -147,33 +148,33 @@ const Donations = () => {
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-[#888] text-sm">Scan with any payment app</p>
+                            <p className="text-[#888] text-sm">{t("donations.qr.desc")}</p>
                         </div>
 
                         {/* Other Payment Methods */}
                         <div className="bg-[#1C1C1C]/70 backdrop-blur-md p-6 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all">
-                            <h4 className="text-lg font-bold text-white mb-4">Other Ways to Donate</h4>
+                            <h4 className="text-lg font-bold text-white mb-4">{t("donations.other.title")}</h4>
                             <div className="space-y-3">
                                 <motion.button
                                     whileHover={{ scale: 1.02 }}
                                     className="w-full py-3 bg-[#141414] border border-[#2A2A2A] rounded-lg text-white font-semibold flex items-center justify-center gap-3 hover:border-[#F5B400] transition-all"
                                 >
                                     <Smartphone size={20} className="text-[#F5B400]" />
-                                    Mobile Banking
+                                    {t("donations.other.mobile")}
                                 </motion.button>
                                 <motion.button
                                     whileHover={{ scale: 1.02 }}
                                     className="w-full py-3 bg-[#141414] border border-[#2A2A2A] rounded-lg text-white font-semibold flex items-center justify-center gap-3 hover:border-[#F5B400] transition-all"
                                 >
                                     <DollarSign size={20} className="text-emerald-500" />
-                                    Bank Transfer
+                                    {t("donations.other.bank")}
                                 </motion.button>
                                 <motion.button
                                     whileHover={{ scale: 1.02 }}
                                     className="w-full py-3 bg-[#141414] border border-[#2A2A2A] rounded-lg text-white font-semibold flex items-center justify-center gap-3 hover:border-[#F5B400] transition-all"
                                 >
                                     <Users size={20} className="text-purple-500" />
-                                    Become a Patron
+                                    {t("donations.other.patron")}
                                 </motion.button>
                             </div>
                         </div>
@@ -188,10 +189,10 @@ const Donations = () => {
                     className="grid md:grid-cols-4 gap-6"
                 >
                     {[
-                        { value: "$500K+", label: "Raised", color: "#F5B400" },
-                        { value: "10K+", label: "Donors", color: "#10B981" },
-                        { value: "50+", label: "Countries", color: "#3B82F6" },
-                        { value: "100%", label: "Transparent", color: "#A855F7" }
+                        { value: "$500K+", label: t("donations.stats.raised"), color: "#F5B400" },
+                        { value: "10K+", label: t("donations.stats.donors"), color: "#10B981" },
+                        { value: "50+", label: t("donations.stats.countries"), color: "#3B82F6" },
+                        { value: "100%", label: t("donations.stats.transparency"), color: "#A855F7" }
                     ].map((stat, i) => (
                         <motion.div
                             key={i}

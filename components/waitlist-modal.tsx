@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Mail, CheckCircle, Loader2 } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 interface WaitlistModalProps {
     isOpen: boolean
@@ -10,6 +11,7 @@ interface WaitlistModalProps {
 }
 
 const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
+    const { t } = useLanguage()
     const [email, setEmail] = useState("")
     const [name, setName] = useState("")
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -70,9 +72,9 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
                                         <div className="w-16 h-16 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
                                             <Mail size={32} className="text-black" />
                                         </div>
-                                        <h2 className="text-2xl font-bold text-white mb-2">Join the Waitlist</h2>
+                                        <h2 className="text-2xl font-bold text-white mb-2">{t("cta.title")}</h2>
                                         <p className="text-[#B3B3B3] text-sm">
-                                            Be among the first to access DeenSphere when we launch.
+                                            {t("cta.description")}
                                         </p>
                                     </div>
 
@@ -80,7 +82,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div>
                                             <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                                                Your Name
+                                                {t("cta.form.name")}
                                             </label>
                                             <input
                                                 type="text"
@@ -94,7 +96,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
                                         </div>
                                         <div>
                                             <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                                                Email Address
+                                                {t("cta.form.email")}
                                             </label>
                                             <input
                                                 type="email"
@@ -111,14 +113,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
                                             disabled={isSubmitting}
                                             className="w-full py-3 gradient-gold text-black font-bold rounded-lg hover:shadow-lg hover:shadow-[#F5B400]/30 transition-all disabled:opacity-70 flex items-center justify-center gap-2"
                                         >
-                                            {isSubmitting ? (
-                                                <>
-                                                    <Loader2 size={20} className="animate-spin" />
-                                                    Joining...
-                                                </>
-                                            ) : (
-                                                "Join Waitlist"
-                                            )}
+                                            {isSubmitting ? t("cta.form.btn_submitting") : t("cta.form.btn")}
                                         </button>
                                     </form>
 
@@ -136,9 +131,9 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
                                     >
                                         <CheckCircle size={40} className="text-emerald-500" />
                                     </motion.div>
-                                    <h2 className="text-2xl font-bold text-white mb-2">You're on the list!</h2>
+                                    <h2 className="text-2xl font-bold text-white mb-2">{t("cta.success.title")}</h2>
                                     <p className="text-[#B3B3B3]">
-                                        We'll notify you when DeenSphere launches.
+                                        {t("cta.success.desc")}
                                     </p>
                                 </div>
                             )}

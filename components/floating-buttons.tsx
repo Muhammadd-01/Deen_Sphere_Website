@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowUp } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 // WhatsApp SVG Icon Component
 const WhatsAppIcon = ({ size = 24 }: { size?: number }) => (
@@ -12,6 +13,7 @@ const WhatsAppIcon = ({ size = 24 }: { size?: number }) => (
 )
 
 const FloatingButtons = () => {
+    const { t } = useLanguage()
     const [showScrollTop, setShowScrollTop] = useState(false)
 
     useEffect(() => {
@@ -46,7 +48,7 @@ const FloatingButtons = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-[#25D366]/50 transition-shadow"
-                title="Chat on WhatsApp"
+                title={t("floating.whatsapp")}
             >
                 <WhatsAppIcon size={26} />
             </motion.a>
@@ -66,6 +68,7 @@ const FloatingButtons = () => {
                         }}
                         onClick={scrollToTop}
                         className="w-12 h-12 bg-[#F5B400] rounded-full flex items-center justify-center text-black hover:bg-[#FFD84D] transition-all shadow-lg hover:shadow-[#F5B400]/50"
+                        title={t("floating.scroll_top")}
                     >
                         <ArrowUp size={20} />
                     </motion.button>

@@ -2,110 +2,112 @@
 
 import { motion } from "framer-motion"
 import { MessageSquare, Calendar, Scale, BookOpen, Download, Globe, Landmark, MessageCircle, Lightbulb, Users, Bot, ArrowDown, Sparkles } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 const FeaturesPage = () => {
+    const { t } = useLanguage()
     const features = [
         {
             id: 1,
-            title: "Connect with Scholars",
-            highlight: "Scholars",
+            title: t("features.scholars.title"),
+            highlight: t("features.scholars.highlight"),
             color: "#F5B400",
             accentColor: "from-amber-500/20",
-            desc: "Direct access to verified Islamic scholars. Get fatwas, spiritual guidance, and Islamic knowledge through private chat, video calls, and live sessions.",
+            desc: t("features.scholars.desc"),
             icon: MessageSquare,
             subFeatures: [
-                { icon: MessageSquare, title: "Private Chat", desc: "1-on-1 messaging" },
-                { icon: Calendar, title: "Booking", desc: "Schedule calls" }
+                { icon: MessageSquare, title: t("features.scholars.sub1.title"), desc: t("features.scholars.sub1.desc") },
+                { icon: Calendar, title: t("features.scholars.sub2.title"), desc: t("features.scholars.sub2.desc") }
             ]
         },
         {
             id: 2,
-            title: "Comparative Religion",
-            highlight: "Religion",
+            title: t("features.religion.title"),
+            highlight: t("features.religion.highlight"),
             color: "#10B981",
             accentColor: "from-emerald-500/20",
-            desc: "Understand different faiths and their comparison with Islam. Evidence-based theological analysis to strengthen your knowledge.",
+            desc: t("features.religion.desc"),
             icon: Scale,
             subFeatures: [
-                { icon: Scale, title: "Deep Analysis", desc: "Trinity, Monotheism, and more" }
+                { icon: Scale, title: t("features.religion.sub1.title"), desc: t("features.religion.sub1.desc") }
             ]
         },
         {
             id: 3,
-            title: "Islamic Library",
-            highlight: "Library",
+            title: t("features.library.title"),
+            highlight: t("features.library.highlight"),
             color: "#3B82F6",
             accentColor: "from-blue-500/20",
-            desc: "Your pocket library with classical and contemporary Islamic books. Read, listen, and learn on the go.",
+            desc: t("features.library.desc"),
             icon: BookOpen,
             subFeatures: [
-                { icon: BookOpen, title: "E-Books", desc: "Read anywhere" },
-                { icon: Download, title: "Offline", desc: "Download books" }
+                { icon: BookOpen, title: t("features.library.sub1.title"), desc: t("features.library.sub1.desc") },
+                { icon: Download, title: t("features.library.sub2.title"), desc: t("features.library.sub2.desc") }
             ]
         },
         {
             id: 4,
-            title: "History, Politics & Economy",
-            highlight: "Economy",
+            title: t("features.history_pol.title"),
+            highlight: t("features.history_pol.highlight"),
             color: "#A855F7",
             accentColor: "from-purple-500/20",
-            desc: "Explore the complete Islamic civilization. From the Golden Age to modern economic systems and governance.",
+            desc: t("features.history_pol.desc"),
             icon: Globe,
             subFeatures: [
-                { icon: Landmark, title: "Islamic Politics", desc: "Governance & Justice" },
-                { icon: Globe, title: "History Timeline", desc: "Interactive events" }
+                { icon: Landmark, title: t("features.history_pol.sub1.title"), desc: t("features.history_pol.sub1.desc") },
+                { icon: Globe, title: t("features.history_pol.sub2.title"), desc: t("features.history_pol.sub2.desc") }
             ]
         },
         {
             id: 5,
-            title: "Islamic Debates",
-            highlight: "Debates",
+            title: t("features.debates.title"),
+            highlight: t("features.debates.highlight"),
             color: "#EF4444",
             accentColor: "from-red-500/20",
-            desc: "Watch and participate in respectful Islamic debates. Learn how to defend your faith with knowledge and wisdom.",
+            desc: t("features.debates.desc"),
             icon: MessageCircle,
             subFeatures: [
-                { icon: MessageCircle, title: "Live Debates", desc: "Real-time discussions" },
-                { icon: Users, title: "Community", desc: "Join discussions" }
+                { icon: MessageCircle, title: t("features.debates.sub1.title"), desc: t("features.debates.sub1.desc") },
+                { icon: Users, title: t("features.debates.sub2.title"), desc: t("features.debates.sub2.desc") }
             ]
         },
         {
             id: 6,
-            title: "Muslim Inventions",
-            highlight: "Inventions",
+            title: t("features.inventions.title"),
+            highlight: t("features.inventions.highlight"),
             color: "#F59E0B",
             accentColor: "from-orange-500/20",
-            desc: "Discover the incredible contributions Muslims made to science, medicine, mathematics, and technology.",
+            desc: t("features.inventions.desc"),
             icon: Lightbulb,
             subFeatures: [
-                { icon: Lightbulb, title: "Discoveries", desc: "Scientific breakthroughs" },
-                { icon: Globe, title: "Timeline", desc: "Historical inventions" }
+                { icon: Lightbulb, title: t("features.inventions.sub1.title"), desc: t("features.inventions.sub1.desc") },
+                { icon: Globe, title: t("features.inventions.sub2.title"), desc: t("features.inventions.sub2.desc") }
             ]
         },
         {
             id: 7,
-            title: "Muslim Scientists",
-            highlight: "Scientists",
+            title: t("features.scholars_sci.title"),
+            highlight: t("features.scholars_sci.highlight"),
             color: "#06B6D4",
             accentColor: "from-cyan-500/20",
-            desc: "Learn about the brilliant Muslim scholars and scientists who shaped the world. From Al-Khwarizmi to Ibn Sina.",
+            desc: t("features.scholars_sci.desc"),
             icon: Users,
             subFeatures: [
-                { icon: Users, title: "Profiles", desc: "Scholar biographies" },
-                { icon: BookOpen, title: "Works", desc: "Their contributions" }
+                { icon: Users, title: t("features.scholars_sci.sub1.title"), desc: t("features.scholars_sci.sub1.desc") },
+                { icon: BookOpen, title: t("features.scholars_sci.sub2.title"), desc: t("features.scholars_sci.sub2.desc") }
             ]
         },
         {
-            id: 8,
-            title: "AI Islamic Assistant",
-            highlight: "AI Assistant",
+            id: 11, // Switched to unique ID to avoid conflict with internal features
+            title: t("features.ai_assistant.title"),
+            highlight: t("features.ai_assistant.highlight"),
             color: "#8B5CF6",
             accentColor: "from-violet-500/20",
-            desc: "Ask any question about Islam and get instant, accurate answers. Powered by verified Islamic knowledge.",
+            desc: t("features.ai_assistant.desc"),
             icon: Bot,
             subFeatures: [
-                { icon: Bot, title: "Chat AI", desc: "Instant answers" },
-                { icon: BookOpen, title: "Sources", desc: "Quran & Hadith references" }
+                { icon: Bot, title: t("features.ai_assistant.sub1.title"), desc: t("features.ai_assistant.sub1.desc") },
+                { icon: BookOpen, title: t("features.ai_assistant.sub2.title"), desc: t("features.ai_assistant.sub2.desc") }
             ]
         }
     ]
@@ -126,14 +128,14 @@ const FeaturesPage = () => {
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C1C1C]/70 backdrop-blur-sm border border-[#F5B400]/30 rounded-full mb-6"
                 >
                     <Sparkles size={16} className="text-[#F5B400]" />
-                    <span className="text-[#FFD84D] text-sm font-medium">8 Powerful Features</span>
+                    <span className="text-[#FFD84D] text-sm font-medium">{t("features_page.badge")}</span>
                 </motion.div>
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-4xl md:text-6xl font-bold text-white mb-6"
                 >
-                    App <span className="text-gradient">Features</span>
+                    {t("features_page.title").split("Features")[0]} <span className="text-gradient">Features</span>
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -141,7 +143,7 @@ const FeaturesPage = () => {
                     transition={{ delay: 0.2 }}
                     className="text-[#B3B3B3] text-lg max-w-3xl mx-auto"
                 >
-                    Explore the powerful features that will be available in the Deen Sphere mobile app.
+                    {t("features_page.description")}
                 </motion.p>
             </div>
 
@@ -205,7 +207,7 @@ const FeaturesPage = () => {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    Learn More
+                                    {t("features.learn_more")}
                                 </motion.button>
                             </a>
                         </motion.div>
@@ -256,10 +258,10 @@ const FeaturesPage = () => {
                         {/* QR Code Side */}
                         <div className="text-center md:text-left">
                             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                                Download the <span className="text-[#F5B400]">Deen Sphere</span> App
+                                {t("features_page.download.title").split("Deen Sphere")[0]} <span className="text-[#F5B400]">Deen Sphere</span> {t("features_page.download.title").split("Deen Sphere")[1]}
                             </h2>
                             <p className="text-[#B3B3B3] mb-8">
-                                Scan the QR code with your phone camera to download the app, or click the buttons below.
+                                {t("features_page.download.description")}
                             </p>
 
                             {/* QR Code Placeholder */}

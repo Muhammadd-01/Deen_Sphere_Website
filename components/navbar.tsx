@@ -5,8 +5,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
+import LanguageSwitcher from "./language-switcher"
 
 const Navbar = () => {
+  const { t } = useLanguage()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -20,13 +23,13 @@ const Navbar = () => {
   }, [])
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Features", href: "/features" },
-    { label: "Speakers", href: "/speakers" },
-    { label: "Lectures", href: "/lectures" },
-    { label: "About", href: "/about" },
-    { label: "Community", href: "/community" },
-    { label: "Contact", href: "/contact" },
+    { label: t("footer.home"), href: "/" },
+    { label: t("nav.features"), href: "/features" },
+    { label: t("nav.speakers"), href: "/speakers" },
+    { label: t("nav.lectures"), href: "/lectures" },
+    { label: t("nav.about"), href: "/about" },
+    { label: t("nav.community"), href: "/community" },
+    { label: t("nav.contact"), href: "/contact" },
   ]
 
   return (
@@ -68,10 +71,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <button className="hidden md:block px-6 py-2 gradient-gold text-black font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm">
-            Get Notified
-          </button>
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageSwitcher />
+            <button className="px-6 py-2 gradient-gold text-black font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm">
+              {t("cta.form.btn")}
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -99,9 +104,14 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <button className="w-full px-4 py-2 gradient-gold text-black font-semibold rounded-lg hover:shadow-lg transition-all duration-300 text-sm">
-              Get Notified
-            </button>
+            <div className="flex flex-col gap-4">
+              <div className="scale-90 origin-left">
+                <LanguageSwitcher />
+              </div>
+              <button className="w-full px-4 py-2 gradient-gold text-black font-semibold rounded-lg hover:shadow-lg transition-all duration-300 text-sm">
+                {t("cta.form.btn")}
+              </button>
+            </div>
           </motion.div>
         )}
       </div>

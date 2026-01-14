@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@layer utilities {
+  .font-urdu {
+    font-family: 'Noto Nastaliq Urdu', serif;
+  }
+
+  .font-arabic {
+    font-family: 'Noto Sans Arabic', sans-serif;
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {

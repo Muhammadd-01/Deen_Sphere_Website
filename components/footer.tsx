@@ -1,6 +1,9 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 // WhatsApp SVG Icon Component
 const WhatsAppIcon = ({ size = 18 }: { size?: number }) => (
@@ -10,6 +13,7 @@ const WhatsAppIcon = ({ size = 18 }: { size?: number }) => (
 )
 
 const Footer = () => {
+  const { t } = useLanguage()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -30,13 +34,13 @@ const Footer = () => {
               <span className="text-xl font-bold text-white group-hover:text-[#F5B400] transition-colors">DeenSphere</span>
             </Link>
             <p className="text-[#B3B3B3] text-sm leading-relaxed">
-              A global platform for Islamic knowledge, community, and spiritual growth.
+              {t("footer.tagline")}
             </p>
           </div>
 
           {/* Platform Links */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Platform</h3>
+            <h3 className="font-semibold text-white mb-4">{t("footer.quick_links")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/about" className="text-[#B3B3B3] hover:text-[#FFD84D] transition-colors">
@@ -58,7 +62,7 @@ const Footer = () => {
 
           {/* Content Links */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Learn</h3>
+            <h3 className="font-semibold text-white mb-4">{t("footer.learn")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/speakers" className="text-[#B3B3B3] hover:text-[#FFD84D] transition-colors">
@@ -80,7 +84,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Resources</h3>
+            <h3 className="font-semibold text-white mb-4">{t("footer.resources")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="#" className="text-[#B3B3B3] hover:text-[#FFD84D] transition-colors">
@@ -102,7 +106,7 @@ const Footer = () => {
 
           {/* Social - Each with brand colors */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Connect</h3>
+            <h3 className="font-semibold text-white mb-4">{t("footer.connect")}</h3>
             <div className="flex flex-wrap gap-3">
               <a href="#" className="w-10 h-10 bg-[#1C1C1C] rounded-lg flex items-center justify-center text-[#B3B3B3] hover:text-white hover:bg-[#1877F2] border border-[#2A2A2A] hover:border-[#1877F2] transition-all">
                 <Facebook size={18} />
@@ -125,7 +129,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#2A2A2A] flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[#B3B3B3] text-sm">© {currentYear} DeenSphere. All rights reserved.</p>
+          <p className="text-[#B3B3B3] text-sm">© {currentYear} DeenSphere. {t("footer.rights")}</p>
           <div className="flex gap-6 text-sm">
             <Link href="#" className="text-[#B3B3B3] hover:text-[#FFD84D] transition-colors">
               Privacy Policy

@@ -2,86 +2,88 @@
 
 import { motion } from "framer-motion"
 import { Play, ExternalLink, Clock, Eye, Sparkles } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 const LecturesPage = () => {
+    const { t } = useLanguage()
     const lectures = [
         {
-            title: "The Beauty of Tawheed",
-            speaker: "Sheikh Ahmad Al-Farooq",
+            title: t("lecture.t1.title"),
+            speaker: t("lecture.t1.speaker"),
             thumbnail: "🕌",
             duration: "45:30",
             views: "125K",
-            category: "Aqeedah",
+            category: t("cat.aqeedah"),
             categoryColor: "#F5B400",
             youtubeUrl: "https://youtube.com/@deensphere"
         },
         {
-            title: "Understanding Surah Al-Kahf",
-            speaker: "Dr. Fatima Hassan",
+            title: t("lecture.t2.title"),
+            speaker: t("lecture.t2.speaker"),
             thumbnail: "📖",
             duration: "1:20:00",
             views: "89K",
-            category: "Tafsir",
+            category: t("cat.tafsir"),
             categoryColor: "#10B981",
             youtubeUrl: "https://youtube.com/@deensphere"
         },
         {
-            title: "The Life of Prophet Muhammad ﷺ",
-            speaker: "Imam Yusuf Ibrahim",
+            title: t("lecture.t3.title"),
+            speaker: t("lecture.t3.speaker"),
             thumbnail: "🌙",
             duration: "2:15:00",
             views: "200K",
-            category: "Seerah",
+            category: t("cat.seerah"),
             categoryColor: "#3B82F6",
             youtubeUrl: "https://youtube.com/@deensphere"
         },
         {
-            title: "Islam vs Christianity: Key Differences",
-            speaker: "Sheikh Muhammad Qasim",
+            title: t("lecture.t4.title"),
+            speaker: t("lecture.t4.speaker"),
             thumbnail: "⚖️",
             duration: "1:45:00",
             views: "350K",
-            category: "Comparative Religion",
+            category: t("cat.comparative"),
             categoryColor: "#A855F7",
             youtubeUrl: "https://youtube.com/@deensphere"
         },
         {
-            title: "The Golden Age of Islam",
-            speaker: "Dr. Aisha Rahman",
+            title: t("lecture.t5.title"),
+            speaker: t("lecture.t5.speaker"),
             thumbnail: "🏛️",
             duration: "55:00",
             views: "75K",
-            category: "History",
+            category: t("cat.history"),
             categoryColor: "#EF4444",
             youtubeUrl: "https://youtube.com/@deensphere"
         },
         {
-            title: "Purification of the Heart",
-            speaker: "Sheikh Omar Suleiman",
+            title: t("lecture.t6.title"),
+            speaker: t("lecture.t6.speaker"),
             thumbnail: "❤️",
             duration: "40:00",
             views: "180K",
-            category: "Spirituality",
+            category: t("cat.spirituality"),
             categoryColor: "#EC4899",
             youtubeUrl: "https://youtube.com/@deensphere"
         },
         {
-            title: "Islamic Economics Explained",
-            speaker: "Dr. Muhammad Akram",
+            title: t("lecture.t7.title"),
+            speaker: t("lecture.t7.speaker"),
             thumbnail: "💰",
             duration: "1:00:00",
             views: "45K",
-            category: "Economy",
+            category: t("cat.economy"),
             categoryColor: "#F59E0B",
             youtubeUrl: "https://youtube.com/@deensphere"
         },
         {
-            title: "Raising Muslim Children",
-            speaker: "Sheikh Ahmad Al-Farooq",
+            title: t("lecture.t8.title"),
+            speaker: t("lecture.t8.speaker"),
             thumbnail: "👨‍👩‍👧‍👦",
             duration: "50:00",
             views: "95K",
-            category: "Family",
+            category: t("cat.family"),
             categoryColor: "#06B6D4",
             youtubeUrl: "https://youtube.com/@deensphere"
         }
@@ -102,14 +104,14 @@ const LecturesPage = () => {
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C1C1C]/70 backdrop-blur-sm border border-[#F5B400]/30 rounded-full mb-6"
                 >
                     <Sparkles size={16} className="text-[#F5B400]" />
-                    <span className="text-[#FFD84D] text-sm font-medium">Video Library</span>
+                    <span className="text-[#FFD84D] text-sm font-medium">{t("lectures_page.badge")}</span>
                 </motion.div>
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-4xl md:text-6xl font-bold text-white mb-6"
                 >
-                    Islamic <span className="text-gradient">Lectures</span>
+                    {t("lectures_page.title")} <span className="text-gradient">{t("lectures_page.title_highlight")}</span>
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -117,7 +119,7 @@ const LecturesPage = () => {
                     transition={{ delay: 0.2 }}
                     className="text-[#B3B3B3] text-lg max-w-3xl mx-auto"
                 >
-                    Watch inspiring lectures from our scholars. Click to watch on YouTube.
+                    {t("lectures_page.subtitle")}
                 </motion.p>
             </div>
 
@@ -174,11 +176,11 @@ const LecturesPage = () => {
                             <div className="flex items-center gap-3 text-[#666] text-xs">
                                 <span className="flex items-center gap-1">
                                     <Eye size={12} />
-                                    {lecture.views} views
+                                    {lecture.views} {t("lectures_page.views")}
                                 </span>
                                 <span className="flex items-center gap-1">
                                     <ExternalLink size={12} />
-                                    YouTube
+                                    {t("lectures_page.youtube")}
                                 </span>
                             </div>
                         </div>
@@ -197,9 +199,9 @@ const LecturesPage = () => {
                     <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#FF0000]/20 to-transparent rounded-full blur-3xl" />
                     <div className="relative z-10">
                         <div className="text-6xl mb-4">📺</div>
-                        <h3 className="text-2xl font-bold text-white mb-3">Subscribe to Our Channel</h3>
+                        <h3 className="text-2xl font-bold text-white mb-3">{t("lectures_page.cta.title")}</h3>
                         <p className="text-[#B3B3B3] mb-6">
-                            Get notified when we upload new lectures. Join our growing community of learners.
+                            {t("lectures_page.cta.desc")}
                         </p>
                         <motion.a
                             href="https://youtube.com/@deensphere"
@@ -208,7 +210,7 @@ const LecturesPage = () => {
                             className="inline-block px-8 py-3 bg-[#FF0000] text-white font-bold rounded-lg hover:bg-[#CC0000] transition-all"
                             whileHover={{ scale: 1.05 }}
                         >
-                            Subscribe on YouTube
+                            {t("lectures_page.cta.btn")}
                         </motion.a>
                     </div>
                 </div>

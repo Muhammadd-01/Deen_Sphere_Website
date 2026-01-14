@@ -2,14 +2,16 @@
 
 import { motion } from "framer-motion"
 import { Users, MessageCircle, Lightbulb, Trophy } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 const Community = () => {
+  const { t } = useLanguage()
 
   const stats = [
-    { icon: Users, label: "Global Members", value: "2M+", color: "#F5B400" },
-    { icon: MessageCircle, label: "Daily Discussions", value: "50K+", color: "#10B981" },
-    { icon: Lightbulb, label: "Learning Resources", value: "10K+", color: "#3B82F6" },
-    { icon: Trophy, label: "Scholarship Givers", value: "5K+", color: "#A855F7" },
+    { icon: Users, label: t("community.stats.members"), value: "2M+", color: "#F5B400" },
+    { icon: MessageCircle, label: t("community.stats.discussions"), value: "50K+", color: "#10B981" },
+    { icon: Lightbulb, label: t("community.stats.resources"), value: "10K+", color: "#3B82F6" },
+    { icon: Trophy, label: t("community.stats.scholars"), value: "5K+", color: "#A855F7" },
   ]
 
   return (
@@ -27,11 +29,11 @@ const Community = () => {
           className="text-center mb-16"
         >
           <div className="inline-block px-4 py-2 bg-[#1C1C1C] border border-[#F5B400] rounded-full mb-6 hover:bg-[#F5B400]/10 transition-all">
-            <span className="text-[#FFD84D] text-sm font-medium">Our Community</span>
+            <span className="text-[#FFD84D] text-sm font-medium">{t("community.badge")}</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">A Growing Global Movement</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">{t("community.title")}</h2>
           <p className="text-lg text-[#B3B3B3] max-w-3xl mx-auto">
-            Join millions of Muslims united in faith, learning, and community building.
+            {t("community.description")}
           </p>
         </motion.div>
 
@@ -67,13 +69,12 @@ const Community = () => {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="bg-gradient-to-r from-[#1C1C1C] to-[#141414] rounded-2xl border border-[#2A2A2A] p-8 md:p-12 text-center hover:border-[#F5B400]/30 transition-all"
         >
-          <h3 className="text-2xl font-bold mb-4">What Makes DeenSphere Special</h3>
+          <h3 className="text-2xl font-bold mb-4">{t("community.values.title")}</h3>
           <p className="text-[#B3B3B3] max-w-3xl mx-auto mb-8">
-            We're committed to creating a space where authentic Islamic knowledge thrives, diverse voices are respected,
-            and everyone can grow spiritually while building meaningful connections with Muslims around the world.
+            {t("community.values.description")}
           </p>
           <div className="grid md:grid-cols-3 gap-6">
-            {["Authentic Knowledge", "Safe Community", "Cultural Diversity"].map((value) => (
+            {[t("community.values.v1"), t("community.values.v2"), t("community.values.v3")].map((value) => (
               <motion.div
                 key={value}
                 className="p-4 bg-[#0B0B0B] rounded-lg hover:bg-[#F5B400]/10 transition-all cursor-pointer"

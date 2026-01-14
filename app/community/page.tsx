@@ -2,12 +2,14 @@
 
 import { motion } from "framer-motion"
 import { Users, MessageCircle, Heart, Share2, Star } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 const CommunityPage = () => {
+    const { t } = useLanguage()
     const testimonials = [
-        { name: "Ahmad K.", text: "DeenSphere helped me connect with scholars and strengthen my deen", rating: 5 },
-        { name: "Fatima M.", text: "An amazing platform that brings Muslims together from all over the world", rating: 5 },
-        { name: "Yusuf R.", text: "The best Islamic app I've used. Very comprehensive and user-friendly", rating: 5 }
+        { name: "Ahmad K.", text: t("community_page.testimonials.t1"), rating: 5 },
+        { name: "Fatima M.", text: t("community_page.testimonials.t2"), rating: 5 },
+        { name: "Yusuf R.", text: t("community_page.testimonials.t3"), rating: 5 }
     ]
 
     return (
@@ -23,7 +25,7 @@ const CommunityPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-4xl md:text-6xl font-bold text-white mb-6"
                 >
-                    Join the <span className="text-gradient">Community</span>
+                    Join the <span className="text-gradient">{t("community_page.title")}</span>
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -31,17 +33,17 @@ const CommunityPage = () => {
                     transition={{ delay: 0.2 }}
                     className="text-[#B3B3B3] text-lg leading-relaxed"
                 >
-                    Connect with millions of Muslims worldwide. Share knowledge, find support, and grow together in faith.
+                    {t("community_page.subtitle")}
                 </motion.p>
             </div>
 
             {/* Stats */}
             <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
                 {[
-                    { label: "Active Members", value: "2M+" },
-                    { label: "Daily Posts", value: "50K+" },
-                    { label: "Countries", value: "150+" },
-                    { label: "Scholars", value: "500+" }
+                    { label: t("community_page.stats.active"), value: "2M+" },
+                    { label: t("community_page.stats.posts"), value: "50K+" },
+                    { label: t("community_page.stats.countries"), value: "150+" },
+                    { label: t("community_page.stats.scholars"), value: "500+" }
                 ].map((stat, i) => (
                     <motion.div
                         key={i}
@@ -60,10 +62,10 @@ const CommunityPage = () => {
             {/* Community Features */}
             <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
                 {[
-                    { icon: <Users size={32} />, title: "Global Network", desc: "Connect with Muslims from every corner of the world" },
-                    { icon: <MessageCircle size={32} />, title: "Discussion Forums", desc: "Engage in meaningful conversations about faith and life" },
-                    { icon: <Heart size={32} />, title: "Support Groups", desc: "Find and offer support in various life situations" },
-                    { icon: <Share2 size={32} />, title: "Share Knowledge", desc: "Learn from others and share your insights" }
+                    { icon: <Users size={32} />, title: t("community_page.f1.title"), desc: t("community_page.f1.desc") },
+                    { icon: <MessageCircle size={32} />, title: t("community_page.f2.title"), desc: t("community_page.f2.desc") },
+                    { icon: <Heart size={32} />, title: t("community_page.f3.title"), desc: t("community_page.f3.desc") },
+                    { icon: <Share2 size={32} />, title: t("community_page.f4.title"), desc: t("community_page.f4.desc") }
                 ].map((feature, i) => (
                     <motion.div
                         key={i}
@@ -85,7 +87,7 @@ const CommunityPage = () => {
             {/* Testimonials */}
             <section className="max-w-7xl mx-auto mb-20">
                 <h2 className="text-3xl font-bold text-white text-center mb-12">
-                    What Our <span className="text-[#F5B400]">Community</span> Says
+                    {t("community_page.testimonials.title").split("Community")[0]} <span className="text-[#F5B400]">Community</span> {t("community_page.testimonials.title").split("Community")[1]}
                 </h2>
                 <div className="grid md:grid-cols-3 gap-8">
                     {testimonials.map((testimonial, i) => (
@@ -118,12 +120,12 @@ const CommunityPage = () => {
                     className="bg-gradient-to-r from-[#141414]/80 to-[#1C1C1C]/80 backdrop-blur-md p-12 rounded-3xl border border-[#F5B400]/30 shadow-2xl overflow-hidden relative"
                 >
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#F5B400]/10 rounded-full blur-2xl" />
-                    <h2 className="text-3xl font-bold text-white mb-4 relative z-10">Ready to Join?</h2>
+                    <h2 className="text-3xl font-bold text-white mb-4 relative z-10">{t("community_page.cta.title")}</h2>
                     <p className="text-[#B3B3B3] mb-8 max-w-2xl mx-auto relative z-10">
-                        Download the Deen Sphere app and become part of a thriving global community dedicated to knowledge, faith, and unity.
+                        {t("community_page.cta.desc")}
                     </p>
                     <button className="px-8 py-4 gradient-gold text-black font-bold rounded-lg hover:shadow-2xl transition-all hover:scale-105 relative z-10">
-                        Download App
+                        {t("community_page.cta.btn")}
                     </button>
                 </motion.div>
             </div>

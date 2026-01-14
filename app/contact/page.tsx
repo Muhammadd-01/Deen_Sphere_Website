@@ -1,16 +1,17 @@
 "use client"
 
 import type React from "react"
-
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { Mail, Phone, MapPin, Send, Loader } from "lucide-react"
 import dynamic from "next/dynamic"
+import { useLanguage } from "@/context/language-context"
 
 // Dynamically import map component
 const MapComponent = dynamic(() => import("@/components/contact/map"), { ssr: false })
 
 export default function ContactPage() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,19 +46,19 @@ export default function ContactPage() {
   const contactInfo = [
     {
       icon: Mail,
-      label: "Email",
+      label: t("contact_page.info.email"),
       value: "hello@deensphere.com",
       href: "mailto:hello@deensphere.com",
     },
     {
       icon: Phone,
-      label: "Phone",
+      label: t("contact_page.info.phone"),
       value: "+1 (555) 123-4567",
       href: "tel:+15551234567",
     },
     {
       icon: MapPin,
-      label: "Address",
+      label: t("contact_page.info.address"),
       value: "Global Community Hub, Earth",
       href: "#",
     },
@@ -77,10 +78,10 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Get In <span className="text-gradient">Touch</span>
+            {t("contact_page.title")} <span className="text-gradient">{t("contact_page.title_highlight")}</span>
           </h1>
           <p className="text-[#B3B3B3] text-lg md:text-xl max-w-3xl mx-auto">
-            Have questions or want to join our community? We'd love to hear from you. Reach out to us anytime.
+            {t("contact_page.subtitle")}
           </p>
         </motion.div>
 
@@ -125,11 +126,11 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
           >
             <div className="p-8 rounded-xl border border-[#2A2A2A] bg-[#1C1C1C]/70 backdrop-blur-md shadow-2xl">
-              <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
+              <h2 className="text-2xl font-bold text-white mb-6">{t("contact_page.form.title")}</h2>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">Name</label>
+                  <label className="block text-sm font-medium text-white mb-2">{t("contact_page.form.name")}</label>
                   <input
                     type="text"
                     name="name"
@@ -137,12 +138,12 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B]/80 border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
-                    placeholder="Your name"
+                    placeholder={t("contact_page.form.placeholder.name")}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">Email</label>
+                  <label className="block text-sm font-medium text-white mb-2">{t("contact_page.form.email")}</label>
                   <input
                     type="email"
                     name="email"
@@ -150,12 +151,12 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B]/80 border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
-                    placeholder="your@email.com"
+                    placeholder={t("contact_page.form.placeholder.email")}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">Subject</label>
+                  <label className="block text-sm font-medium text-white mb-2">{t("contact_page.form.subject")}</label>
                   <input
                     type="text"
                     name="subject"
@@ -163,12 +164,12 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B]/80 border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
-                    placeholder="What is this about?"
+                    placeholder={t("contact_page.form.placeholder.subject")}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">Message</label>
+                  <label className="block text-sm font-medium text-white mb-2">{t("contact_page.form.message")}</label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -176,7 +177,7 @@ export default function ContactPage() {
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B] border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border resize-none"
-                    placeholder="Your message..."
+                    placeholder={t("contact_page.form.placeholder.message")}
                   ></textarea>
                 </div>
 
@@ -188,12 +189,12 @@ export default function ContactPage() {
                   {isLoading ? (
                     <>
                       <Loader className="w-5 h-5 animate-spin" />
-                      Sending...
+                      {t("contact_page.form.btn.sending")}
                     </>
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
-                      Send Message
+                      {t("contact_page.form.btn")}
                     </>
                   )}
                 </button>
@@ -205,7 +206,7 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="p-4 rounded-lg bg-green-500/20 border border-green-500 text-green-400 text-sm"
                   >
-                    ✓ Message sent successfully! We'll get back to you soon.
+                    {t("contact_page.form.success")}
                   </motion.div>
                 )}
               </form>

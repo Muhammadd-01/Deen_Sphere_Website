@@ -2,61 +2,63 @@
 
 import { motion } from "framer-motion"
 import { Star, Video, Sparkles } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 const SpeakersPage = () => {
+    const { t } = useLanguage()
     const speakers = [
         {
-            name: "Sheikh Ahmad Al-Farooq",
-            specialty: "Fiqh & Islamic Jurisprudence",
+            name: t("lecture.t1.speaker"), // Reusing speaker name
+            specialty: t("spec.fiqh"),
             image: "👳",
             rating: 5,
             sessions: 150,
-            bio: "A renowned scholar specializing in Hanafi fiqh with over 20 years of teaching experience.",
+            bio: t("speaker.bio.ahmad"),
             accentColor: "from-amber-500/20"
         },
         {
-            name: "Dr. Fatima Hassan",
-            specialty: "Quranic Studies",
+            name: t("lecture.t2.speaker"),
+            specialty: t("spec.quran"),
             image: "🧕",
             rating: 5,
             sessions: 200,
-            bio: "PhD in Quranic Sciences from Al-Azhar University. Expert in Tajweed and Tafsir.",
+            bio: t("speaker.bio.fatima"),
             accentColor: "from-emerald-500/20"
         },
         {
-            name: "Imam Yusuf Ibrahim",
-            specialty: "Hadith Sciences",
+            name: t("lecture.t3.speaker"),
+            specialty: t("spec.hadith"),
             image: "👳",
             rating: 5,
             sessions: 180,
-            bio: "Specialist in Hadith authentication and narrator criticism. Author of several books.",
+            bio: t("speaker.bio.yusuf"),
             accentColor: "from-blue-500/20"
         },
         {
-            name: "Sheikh Muhammad Qasim",
-            specialty: "Comparative Religion",
+            name: t("lecture.t4.speaker"),
+            specialty: t("spec.comparative"),
             image: "👳",
             rating: 5,
             sessions: 120,
-            bio: "Expert in interfaith dialogue and dawah. Has debated with scholars from various faiths.",
+            bio: t("speaker.bio.muhammad"),
             accentColor: "from-purple-500/20"
         },
         {
-            name: "Dr. Aisha Rahman",
-            specialty: "Islamic History",
+            name: t("lecture.t5.speaker"),
+            specialty: t("spec.history"),
             image: "🧕",
             rating: 5,
             sessions: 90,
-            bio: "Historian specializing in the Golden Age of Islam and Ottoman Empire.",
+            bio: t("speaker.bio.aisha"),
             accentColor: "from-rose-500/20"
         },
         {
-            name: "Sheikh Omar Suleiman",
-            specialty: "Spirituality & Tazkiyah",
+            name: t("lecture.t6.speaker"),
+            specialty: t("spec.spirituality"),
             image: "👳",
             rating: 5,
             sessions: 250,
-            bio: "Known for his inspiring lectures on spiritual purification and personal development.",
+            bio: t("speaker.bio.omar"),
             accentColor: "from-cyan-500/20"
         }
     ]
@@ -76,14 +78,14 @@ const SpeakersPage = () => {
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C1C1C]/70 backdrop-blur-sm border border-[#F5B400]/30 rounded-full mb-6"
                 >
                     <Sparkles size={16} className="text-[#F5B400]" />
-                    <span className="text-[#FFD84D] text-sm font-medium">World-Class Scholars</span>
+                    <span className="text-[#FFD84D] text-sm font-medium">{t("speakers_page.badge")}</span>
                 </motion.div>
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-4xl md:text-6xl font-bold text-white mb-6"
                 >
-                    Our <span className="text-gradient">Speakers</span>
+                    {t("speakers_page.title")} <span className="text-gradient">{t("speakers_page.title_highlight")}</span>
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -91,7 +93,7 @@ const SpeakersPage = () => {
                     transition={{ delay: 0.2 }}
                     className="text-[#B3B3B3] text-lg max-w-3xl mx-auto"
                 >
-                    Learn from world-renowned Islamic scholars and speakers. Book private sessions or attend live lectures.
+                    {t("speakers_page.subtitle")}
                 </motion.p>
             </div>
 
@@ -127,7 +129,7 @@ const SpeakersPage = () => {
                                         <Star key={j} size={14} className="text-[#F5B400] fill-[#F5B400]" />
                                     ))}
                                 </div>
-                                <span className="text-[#888] text-xs">{speaker.sessions} sessions</span>
+                                <span className="text-[#888] text-xs">{speaker.sessions} {t("speakers_page.sessions")}</span>
                             </div>
 
                             {/* Bio */}
@@ -140,7 +142,7 @@ const SpeakersPage = () => {
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <Video size={18} />
-                                Book Speaker
+                                {t("speakers_page.btn.book")}
                             </motion.button>
                         </div>
                     </motion.div>
@@ -158,15 +160,15 @@ const SpeakersPage = () => {
                     <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#F5B400]/20 to-transparent rounded-full blur-3xl" />
                     <div className="relative z-10">
                         <div className="text-5xl mb-4">🎤</div>
-                        <h3 className="text-2xl font-bold text-white mb-3">Become a Speaker</h3>
+                        <h3 className="text-2xl font-bold text-white mb-3">{t("speakers_page.cta.title")}</h3>
                         <p className="text-[#B3B3B3] mb-6">
-                            Are you a qualified Islamic scholar? Join our platform and share your knowledge with millions.
+                            {t("speakers_page.cta.desc")}
                         </p>
                         <motion.button
                             className="px-8 py-3 gradient-gold text-black font-bold rounded-lg hover:shadow-lg hover:shadow-[#F5B400]/30 transition-all"
                             whileHover={{ scale: 1.05 }}
                         >
-                            Apply Now
+                            {t("speakers_page.cta.btn")}
                         </motion.button>
                     </div>
                 </div>

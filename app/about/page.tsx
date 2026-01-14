@@ -3,8 +3,10 @@
 import { motion } from "framer-motion"
 import { Scale, Globe, Landmark, Target } from "lucide-react"
 import Donations from "@/components/sections/donations"
+import { useLanguage } from "@/context/language-context"
 
 const AboutPage = () => {
+    const { t } = useLanguage()
     return (
         <div className="min-h-screen bg-transparent pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative">
             {/* Color accent gradients */}
@@ -18,7 +20,7 @@ const AboutPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-4xl md:text-6xl font-bold text-white mb-6"
                 >
-                    About <span className="text-gradient">Deen Sphere</span>
+                    {t("about_page.title")} <span className="text-gradient">Deen Sphere</span>
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -26,7 +28,7 @@ const AboutPage = () => {
                     transition={{ delay: 0.2 }}
                     className="text-[#B3B3B3] text-lg leading-relaxed"
                 >
-                    A comprehensive platform bringing together all aspects of Islamic civilization
+                    {t("about_page.subtitle")}
                 </motion.p>
             </div>
 
@@ -41,18 +43,15 @@ const AboutPage = () => {
                             <div className="w-12 h-12 rounded-xl bg-[#1C1C1C] flex items-center justify-center">
                                 <Target className="text-[#F5B400]" size={24} />
                             </div>
-                            <h2 className="text-3xl font-bold text-white">Our Vision</h2>
+                            <h2 className="text-3xl font-bold text-white">{t("about_page.vision.title")}</h2>
                         </div>
 
                         <p className="text-[#B3B3B3] text-lg leading-relaxed mb-6">
-                            To revive the complete understanding of Islam as a comprehensive way of life, not just a set of rituals.
-                            Deen Sphere aims to gather and present the full spectrum of Islamic civilization—from spirituality to
-                            governance, from economics to history.
+                            {t("about_page.vision.desc1")}
                         </p>
 
                         <p className="text-[#B3B3B3] text-lg leading-relaxed">
-                            We believe that Islam provided a holistic framework for human existence, and understanding this
-                            completeness is essential for Muslims navigating the modern world.
+                            {t("about_page.vision.desc2")}
                         </p>
                     </div>
                 </div>
@@ -61,7 +60,7 @@ const AboutPage = () => {
             {/* Mission Pillars */}
             <section className="max-w-7xl mx-auto mb-24">
                 <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
-                    Our <span className="text-[#F5B400]">Mission</span>
+                    {t("about_page.mission.title")} <span className="text-[#F5B400]">{t("about_page.mission.highlight")}</span>
                 </h2>
 
                 <div className="grid md:grid-cols-3 gap-8">
@@ -76,10 +75,9 @@ const AboutPage = () => {
                         <div className="w-14 h-14 bg-[#1C1C1C] rounded-xl flex items-center justify-center mb-6">
                             <Landmark className="text-[#F5B400]" size={32} />
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-4">Politics & Governance</h3>
+                        <h3 className="text-2xl font-bold text-white mb-4">{t("about_page.mission.p1.title")}</h3>
                         <p className="text-[#B3B3B3] leading-relaxed">
-                            Rediscovering the principles of justice (Adl), consultation (Shura), and ethical leadership
-                            that governed Islamic civilizations for centuries.
+                            {t("about_page.mission.p1.desc")}
                         </p>
                     </motion.div>
 
@@ -94,10 +92,9 @@ const AboutPage = () => {
                         <div className="w-14 h-14 bg-[#1C1C1C] rounded-xl flex items-center justify-center mb-6">
                             <Scale className="text-[#F5B400]" size={32} />
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-4">Economy & Finance</h3>
+                        <h3 className="text-2xl font-bold text-white mb-4">{t("about_page.mission.p2.title")}</h3>
                         <p className="text-[#B3B3B3] leading-relaxed">
-                            Moving beyond interest (Riba) to an equitable system of wealth distribution, ethical trade,
-                            and social welfare through Zakat and Waqf.
+                            {t("about_page.mission.p2.desc")}
                         </p>
                     </motion.div>
 
@@ -112,10 +109,9 @@ const AboutPage = () => {
                         <div className="w-14 h-14 bg-[#1C1C1C] rounded-xl flex items-center justify-center mb-6">
                             <Globe className="text-[#F5B400]" size={32} />
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-4">History & Civilization</h3>
+                        <h3 className="text-2xl font-bold text-white mb-4">{t("about_page.mission.p3.title")}</h3>
                         <p className="text-[#B3B3B3] leading-relaxed">
-                            Connecting the past to the future. Learning from the Golden Age of Islam to inspire
-                            a modern renaissance of knowledge and innovation.
+                            {t("about_page.mission.p3.desc")}
                         </p>
                     </motion.div>
                 </div>
@@ -130,7 +126,7 @@ const AboutPage = () => {
                     className="bg-gradient-to-r from-[#141414] to-[#1C1C1C] p-12 rounded-3xl border border-[#F5B400]/30 text-center"
                 >
                     <p className="text-2xl md:text-3xl font-serif italic text-white mb-6">
-                        "Islam is not just a religion of worship, but a complete way of life"
+                        "{t("about_page.quote")}"
                     </p>
                     <div className="w-16 h-1 bg-[#F5B400] mx-auto"></div>
                 </motion.div>

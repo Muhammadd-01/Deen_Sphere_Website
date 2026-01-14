@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import FloatingButtons from "@/components/floating-buttons"
 import BackgroundAnimation from "@/components/background-animation"
+import { LanguageProvider } from "@/context/language-context"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -52,14 +53,17 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className={`font-sans antialiased bg-gradient-to-b from-[#0B0B0B] to-[#141414] text-white`}>
-        <BackgroundAnimation />
-        <Navbar />
-        <main className="min-h-screen relative z-10">{children}</main>
-        <Footer />
-        <FloatingButtons />
-        <Analytics />
+        <LanguageProvider>
+          <BackgroundAnimation />
+          <Navbar />
+          <main className="min-h-screen relative z-10">{children}</main>
+          <Footer />
+          <FloatingButtons />
+          <Analytics />
+        </LanguageProvider>
       </body>
     </html>
   )

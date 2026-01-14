@@ -1,52 +1,54 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { BookOpen, Users, BarChart, Shield, Search, Zap } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
 
 const Features = () => {
+  const { t } = useLanguage()
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true })
 
   const features = [
     {
       icon: BookOpen,
-      title: "Quranic Access",
-      description: "Study the Quran with translations, tafsir, and scholarly commentary.",
+      title: t("features.quran.title"),
+      description: t("features.quran.desc"),
       color: "from-blue-500 to-cyan-600",
     },
     {
       icon: Users,
-      title: "Community Forum",
-      description: "Engage in meaningful discussions with Muslims worldwide.",
+      title: t("features.community.title"),
+      description: t("features.community.desc"),
       color: "from-purple-500 to-pink-600",
     },
     {
       icon: BarChart,
-      title: "Learning Paths",
-      description: "Structured courses from beginner to advanced Islamic knowledge.",
+      title: t("features.learning.title"),
+      description: t("features.learning.desc"),
       color: "from-emerald-500 to-teal-600",
     },
     {
       icon: Shield,
-      title: "Moderated Safety",
-      description: "A respectful environment with active community moderation.",
+      title: t("features.safety.title"),
+      description: t("features.safety.desc"),
       color: "from-red-500 to-rose-600",
     },
     {
       icon: Search,
-      title: "Smart Search",
-      description: "Find Islamic knowledge, hadith, and scholarly articles instantly.",
+      title: t("features.search.title"),
+      description: t("features.search.desc"),
       color: "from-yellow-400 to-orange-500",
     },
     {
       icon: Zap,
-      title: "Daily Reminders",
-      description: "Personalized notifications for prayers, wisdom, and learning.",
+      title: t("features.reminders.title"),
+      description: t("features.reminders.desc"),
       color: "from-indigo-500 to-blue-600",
     },
   ]
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -56,7 +58,7 @@ const Features = () => {
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -87,13 +89,13 @@ const Features = () => {
             className="inline-block px-4 py-2 bg-[#1C1C1C] border border-[#F5B400] rounded-full mb-6 hover:border-[#FFD84D] hover:shadow-lg hover:shadow-[#F5B400]/30 transition-all duration-300 cursor-pointer"
             whileHover={{ scale: 1.05 }}
           >
-            <span className="text-[#FFD84D] text-sm font-medium">Powerful Features</span>
+            <span className="text-[#FFD84D] text-sm font-medium">{t("features.badge")}</span>
           </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Everything <span className="text-gradient">You Need</span>
+            Everything <span className="text-gradient">{t("features.title").split("Everything ")[1]}</span>
           </h2>
           <p className="text-lg text-[#B3B3B3] max-w-3xl mx-auto hover:text-white transition-colors duration-300">
-            A comprehensive platform designed to support your Islamic journey.
+            {t("features.description")}
           </p>
         </motion.div>
 
@@ -110,7 +112,7 @@ const Features = () => {
               <motion.div key={feature.title} variants={itemVariants} className="group relative">
                 <a
                   href="/features#download-app"
-                  className={`block h-full p-6 rounded-xl border border-[#2A2A2A] bg-[#1C1C1C]/70 backdrop-blur-md hover-lift hover:border-[#F5B400] cursor-pointer overflow-hidden transition-all duration-300 relative`}
+                  className={`block h-full p-6 rounded-xl border border-[#2A2A2A] bg-[#1C1C1C]/70 backdrop-blur-md hover-lift hover:border-[#F5B400] cursor-pointer overflow-hidden transition-all duration-300 relative will-change-transform`}
                 >
                   <div
                     className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-br ${feature.color}`}
@@ -132,7 +134,7 @@ const Features = () => {
                     </p>
 
                     <div className="mt-4 flex items-center gap-2 text-[#F5B400] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-sm font-medium">Learn more</span>
+                      <span className="text-sm font-medium">{t("features.learn_more")}</span>
                       <motion.span
                         animate={{ x: [0, 5, 0] }}
                         transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
