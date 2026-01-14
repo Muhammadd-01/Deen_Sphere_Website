@@ -11,7 +11,11 @@ const CommunityPage = () => {
     ]
 
     return (
-        <div className="min-h-screen bg-[#0B0B0B] pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-transparent pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative">
+            {/* Color accent gradients */}
+            <div className="absolute top-40 right-0 w-96 h-96 bg-gradient-to-l from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-40 left-0 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-transparent via-[#F5B400]/5 to-transparent pointer-events-none" />
             {/* Hero */}
             <div className="max-w-4xl mx-auto text-center mb-20">
                 <motion.h1
@@ -45,10 +49,10 @@ const CommunityPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="bg-[#141414] p-6 rounded-2xl border border-[#2A2A2A] text-center hover:border-[#F5B400]/50 transition-all"
+                        className="bg-[#141414]/70 backdrop-blur-md p-6 rounded-2xl border border-[#2A2A2A] text-center hover:border-[#F5B400]/50 transition-all hover:scale-105"
                     >
                         <div className="text-3xl font-bold text-[#F5B400] mb-2">{stat.value}</div>
-                        <div className="text-[#B3B3B3] text-sm">{stat.label}</div>
+                        <div className="text-[#B3B3B3] text-sm group-hover:text-white transition-colors">{stat.label}</div>
                     </motion.div>
                 ))}
             </div>
@@ -67,13 +71,13 @@ const CommunityPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="bg-[#141414] p-6 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/50 transition-all text-center group"
+                        className="bg-[#141414]/70 backdrop-blur-md p-6 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/50 transition-all text-center group"
                     >
-                        <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1C1C1C] rounded-xl mb-4 text-[#F5B400] group-hover:scale-110 transition-transform">
+                        <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1C1C1C]/70 backdrop-blur-sm rounded-xl mb-4 text-[#F5B400] group-hover:scale-110 transition-transform">
                             {feature.icon}
                         </div>
                         <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                        <p className="text-[#B3B3B3] text-sm">{feature.desc}</p>
+                        <p className="text-[#B3B3B3] text-sm group-hover:text-white transition-colors">{feature.desc}</p>
                     </motion.div>
                 ))}
             </div>
@@ -91,14 +95,14 @@ const CommunityPage = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="bg-[#141414] p-6 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all"
+                            className="bg-[#141414]/70 backdrop-blur-md p-6 rounded-2xl border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all group"
                         >
                             <div className="flex gap-1 mb-4">
                                 {[...Array(testimonial.rating)].map((_, j) => (
                                     <Star key={j} size={16} className="text-[#F5B400] fill-[#F5B400]" />
                                 ))}
                             </div>
-                            <p className="text-[#B3B3B3] mb-4 italic">"{testimonial.text}"</p>
+                            <p className="text-[#B3B3B3] mb-4 italic group-hover:text-white transition-colors">"{testimonial.text}"</p>
                             <p className="text-white font-bold">— {testimonial.name}</p>
                         </motion.div>
                     ))}
@@ -111,13 +115,14 @@ const CommunityPage = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="bg-gradient-to-r from-[#141414] to-[#1C1C1C] p-12 rounded-3xl border border-[#F5B400]/30"
+                    className="bg-gradient-to-r from-[#141414]/80 to-[#1C1C1C]/80 backdrop-blur-md p-12 rounded-3xl border border-[#F5B400]/30 shadow-2xl overflow-hidden relative"
                 >
-                    <h2 className="text-3xl font-bold text-white mb-4">Ready to Join?</h2>
-                    <p className="text-[#B3B3B3] mb-8 max-w-2xl mx-auto">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#F5B400]/10 rounded-full blur-2xl" />
+                    <h2 className="text-3xl font-bold text-white mb-4 relative z-10">Ready to Join?</h2>
+                    <p className="text-[#B3B3B3] mb-8 max-w-2xl mx-auto relative z-10">
                         Download the Deen Sphere app and become part of a thriving global community dedicated to knowledge, faith, and unity.
                     </p>
-                    <button className="px-8 py-4 gradient-gold text-black font-bold rounded-lg hover:shadow-2xl transition-all hover:scale-105">
+                    <button className="px-8 py-4 gradient-gold text-black font-bold rounded-lg hover:shadow-2xl transition-all hover:scale-105 relative z-10">
                         Download App
                     </button>
                 </motion.div>

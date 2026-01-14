@@ -1,8 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MessageSquare, Calendar, Scale, BookOpen, Download, Globe, Landmark, MessageCircle, Lightbulb, Users, Bot, ArrowDown } from "lucide-react"
-import Link from "next/link"
+import { MessageSquare, Calendar, Scale, BookOpen, Download, Globe, Landmark, MessageCircle, Lightbulb, Users, Bot, ArrowDown, Sparkles } from "lucide-react"
 
 const FeaturesPage = () => {
     const features = [
@@ -11,6 +10,7 @@ const FeaturesPage = () => {
             title: "Connect with Scholars",
             highlight: "Scholars",
             color: "#F5B400",
+            accentColor: "from-amber-500/20",
             desc: "Direct access to verified Islamic scholars. Get fatwas, spiritual guidance, and Islamic knowledge through private chat, video calls, and live sessions.",
             icon: MessageSquare,
             subFeatures: [
@@ -23,6 +23,7 @@ const FeaturesPage = () => {
             title: "Comparative Religion",
             highlight: "Religion",
             color: "#10B981",
+            accentColor: "from-emerald-500/20",
             desc: "Understand different faiths and their comparison with Islam. Evidence-based theological analysis to strengthen your knowledge.",
             icon: Scale,
             subFeatures: [
@@ -34,6 +35,7 @@ const FeaturesPage = () => {
             title: "Islamic Library",
             highlight: "Library",
             color: "#3B82F6",
+            accentColor: "from-blue-500/20",
             desc: "Your pocket library with classical and contemporary Islamic books. Read, listen, and learn on the go.",
             icon: BookOpen,
             subFeatures: [
@@ -46,6 +48,7 @@ const FeaturesPage = () => {
             title: "History, Politics & Economy",
             highlight: "Economy",
             color: "#A855F7",
+            accentColor: "from-purple-500/20",
             desc: "Explore the complete Islamic civilization. From the Golden Age to modern economic systems and governance.",
             icon: Globe,
             subFeatures: [
@@ -58,6 +61,7 @@ const FeaturesPage = () => {
             title: "Islamic Debates",
             highlight: "Debates",
             color: "#EF4444",
+            accentColor: "from-red-500/20",
             desc: "Watch and participate in respectful Islamic debates. Learn how to defend your faith with knowledge and wisdom.",
             icon: MessageCircle,
             subFeatures: [
@@ -70,6 +74,7 @@ const FeaturesPage = () => {
             title: "Muslim Inventions",
             highlight: "Inventions",
             color: "#F59E0B",
+            accentColor: "from-orange-500/20",
             desc: "Discover the incredible contributions Muslims made to science, medicine, mathematics, and technology.",
             icon: Lightbulb,
             subFeatures: [
@@ -82,6 +87,7 @@ const FeaturesPage = () => {
             title: "Muslim Scientists",
             highlight: "Scientists",
             color: "#06B6D4",
+            accentColor: "from-cyan-500/20",
             desc: "Learn about the brilliant Muslim scholars and scientists who shaped the world. From Al-Khwarizmi to Ibn Sina.",
             icon: Users,
             subFeatures: [
@@ -94,6 +100,7 @@ const FeaturesPage = () => {
             title: "AI Islamic Assistant",
             highlight: "AI Assistant",
             color: "#8B5CF6",
+            accentColor: "from-violet-500/20",
             desc: "Ask any question about Islam and get instant, accurate answers. Powered by verified Islamic knowledge.",
             icon: Bot,
             subFeatures: [
@@ -104,9 +111,23 @@ const FeaturesPage = () => {
     ]
 
     return (
-        <div className="min-h-screen bg-[#0B0B0B] pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-transparent pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative">
+            {/* Color accent gradients */}
+            <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-r from-amber-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/3 right-0 w-96 h-96 bg-gradient-to-l from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-1/3 left-0 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-20 right-20 w-64 h-64 bg-gradient-to-l from-blue-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
             {/* Page Header */}
-            <div className="max-w-7xl mx-auto text-center mb-20">
+            <div className="max-w-7xl mx-auto text-center mb-20 relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C1C1C]/70 backdrop-blur-sm border border-[#F5B400]/30 rounded-full mb-6"
+                >
+                    <Sparkles size={16} className="text-[#F5B400]" />
+                    <span className="text-[#FFD84D] text-sm font-medium">8 Powerful Features</span>
+                </motion.div>
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -126,7 +147,7 @@ const FeaturesPage = () => {
 
             {/* All Features */}
             {features.map((feature, idx) => (
-                <section key={feature.id} className="max-w-7xl mx-auto mb-32">
+                <section key={feature.id} className="max-w-7xl mx-auto mb-32 relative z-10">
                     <div className={`grid lg:grid-cols-2 gap-12 items-center ${idx % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
                         {/* Content */}
                         <motion.div
@@ -138,7 +159,7 @@ const FeaturesPage = () => {
                         >
                             <div
                                 className="inline-block px-4 py-1 rounded-full border text-sm font-medium mb-6"
-                                style={{ borderColor: `${feature.color}30`, backgroundColor: `${feature.color}10`, color: feature.color }}
+                                style={{ borderColor: `${feature.color}50`, backgroundColor: `${feature.color}15`, color: feature.color }}
                             >
                                 Feature #{feature.id}
                             </div>
@@ -152,7 +173,11 @@ const FeaturesPage = () => {
 
                             <div className="grid grid-cols-2 gap-4 mb-6">
                                 {feature.subFeatures.map((sub, i) => (
-                                    <div key={i} className="flex items-start gap-3">
+                                    <motion.div
+                                        key={i}
+                                        className="flex items-start gap-3 p-3 bg-[#1C1C1C]/50 backdrop-blur-sm rounded-lg border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all"
+                                        whileHover={{ scale: 1.02 }}
+                                    >
                                         <div
                                             className="w-10 h-10 rounded-lg bg-[#1C1C1C] flex items-center justify-center"
                                             style={{ color: feature.color }}
@@ -163,7 +188,7 @@ const FeaturesPage = () => {
                                             <h3 className="text-white font-bold">{sub.title}</h3>
                                             <p className="text-xs text-[#888]">{sub.desc}</p>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
 
@@ -174,12 +199,14 @@ const FeaturesPage = () => {
                                     document.getElementById('download-app')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
                             >
-                                <button
-                                    className="px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-lg"
+                                <motion.button
+                                    className="px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg"
                                     style={{ backgroundColor: feature.color, color: '#000' }}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.98 }}
                                 >
                                     Learn More
-                                </button>
+                                </motion.button>
                             </a>
                         </motion.div>
 
@@ -191,12 +218,19 @@ const FeaturesPage = () => {
                             transition={{ duration: 0.8 }}
                             className={`relative flex justify-center ${idx % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}
                         >
+                            {/* Glow effect behind phone */}
+                            <div
+                                className={`absolute inset-0 bg-gradient-to-br ${feature.accentColor} to-transparent rounded-full blur-3xl opacity-50`}
+                            />
                             <div className="relative w-[280px] h-[560px] bg-black rounded-[40px] border-[8px] border-[#2A2A2A] overflow-hidden shadow-2xl">
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-xl z-20"></div>
-                                <div className="w-full h-full bg-[#141414] flex items-center justify-center">
+                                <div
+                                    className="w-full h-full flex items-center justify-center"
+                                    style={{ background: `linear-gradient(135deg, ${feature.color}15 0%, #141414 100%)` }}
+                                >
                                     <div className="text-center px-8">
                                         <feature.icon size={48} style={{ color: feature.color }} className="mx-auto mb-4" />
-                                        <p className="text-white text-sm">{feature.highlight} Screen</p>
+                                        <p className="text-white text-sm font-semibold">{feature.highlight} Screen</p>
                                         <p className="text-[#666] text-xs mt-2">Replace with your mockup</p>
                                     </div>
                                 </div>
@@ -207,14 +241,18 @@ const FeaturesPage = () => {
             ))}
 
             {/* QR Code Download Section */}
-            <section id="download-app" className="max-w-7xl mx-auto py-20">
+            <section id="download-app" className="max-w-7xl mx-auto py-20 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="bg-gradient-to-r from-[#141414] to-[#1C1C1C] rounded-3xl p-8 md:p-16 border border-[#F5B400]/30"
+                    className="bg-gradient-to-r from-[#141414]/80 to-[#1C1C1C]/80 backdrop-blur-md rounded-3xl p-8 md:p-16 border border-[#F5B400]/30 relative overflow-hidden"
                 >
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                    {/* Decorative gradient */}
+                    <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-[#F5B400]/20 to-transparent rounded-full blur-3xl" />
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-full blur-3xl" />
+
+                    <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
                         {/* QR Code Side */}
                         <div className="text-center md:text-left">
                             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -225,7 +263,7 @@ const FeaturesPage = () => {
                             </p>
 
                             {/* QR Code Placeholder */}
-                            <div className="inline-block p-6 bg-white rounded-2xl mb-8">
+                            <div className="inline-block p-6 bg-white rounded-2xl mb-8 shadow-lg shadow-white/10">
                                 <div className="w-40 h-40 bg-[#0B0B0B] rounded-lg flex items-center justify-center">
                                     <div className="text-center">
                                         <ArrowDown size={32} className="text-[#F5B400] mx-auto mb-2" />
@@ -237,18 +275,28 @@ const FeaturesPage = () => {
 
                             {/* App Store Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                                <button className="px-6 py-3 bg-[#1C1C1C] border border-[#2A2A2A] rounded-lg text-white font-semibold hover:border-[#F5B400] transition-all">
+                                <motion.button
+                                    className="px-6 py-3 bg-[#1C1C1C] border border-[#2A2A2A] rounded-lg text-white font-semibold hover:border-[#F5B400] hover:bg-[#F5B400]/10 transition-all"
+                                    whileHover={{ scale: 1.05 }}
+                                >
                                     📱 App Store
-                                </button>
-                                <button className="px-6 py-3 bg-[#1C1C1C] border border-[#2A2A2A] rounded-lg text-white font-semibold hover:border-[#F5B400] transition-all">
+                                </motion.button>
+                                <motion.button
+                                    className="px-6 py-3 bg-[#1C1C1C] border border-[#2A2A2A] rounded-lg text-white font-semibold hover:border-[#10B981] hover:bg-[#10B981]/10 transition-all"
+                                    whileHover={{ scale: 1.05 }}
+                                >
                                     🤖 Google Play
-                                </button>
+                                </motion.button>
                             </div>
                         </div>
 
                         {/* Phone Mockup */}
                         <div className="flex justify-center">
-                            <div className="relative w-[280px] h-[560px] bg-black rounded-[40px] border-[8px] border-[#2A2A2A] overflow-hidden shadow-2xl">
+                            <motion.div
+                                className="relative w-[280px] h-[560px] bg-black rounded-[40px] border-[8px] border-[#2A2A2A] overflow-hidden shadow-2xl"
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ type: "spring", stiffness: 200 }}
+                            >
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-xl z-20"></div>
                                 <div className="w-full h-full bg-gradient-to-br from-[#F5B400]/20 to-[#E6A800]/10 flex items-center justify-center">
                                     <div className="text-center px-8">
@@ -257,7 +305,7 @@ const FeaturesPage = () => {
                                         <p className="text-[#F5B400] text-sm mt-2">Coming Soon</p>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </motion.div>

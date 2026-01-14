@@ -64,7 +64,10 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0B0B0B] via-[#141414] to-[#0B0B0B]">
+    <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent relative">
+      {/* Color accent gradients */}
+      <div className="absolute top-40 left-0 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-40 right-0 w-80 h-80 bg-gradient-to-l from-[#F5B400]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -94,7 +97,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="h-full p-6 rounded-xl border border-[#2A2A2A] bg-gradient-to-br from-[#1C1C1C] to-[#141414] hover-lift hover:border-[#F5B400] transition-all duration-300">
+                <div className="h-full p-6 rounded-xl border border-[#2A2A2A] bg-[#1C1C1C]/70 backdrop-blur-md hover-lift hover:border-[#F5B400] transition-all duration-300">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#F5B400] to-[#E6A800] p-2.5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 flex-shrink-0 flex items-center justify-center">
                       <Icon className="w-6 h-6 text-black" />
@@ -121,7 +124,7 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="p-8 rounded-xl border border-[#2A2A2A] bg-gradient-to-br from-[#1C1C1C] to-[#141414]">
+            <div className="p-8 rounded-xl border border-[#2A2A2A] bg-[#1C1C1C]/70 backdrop-blur-md shadow-2xl">
               <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
 
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -133,7 +136,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B] border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
+                    className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B]/80 border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
                     placeholder="Your name"
                   />
                 </div>
@@ -146,7 +149,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B] border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
+                    className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B]/80 border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -159,7 +162,7 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B] border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
+                    className="w-full px-4 py-3 rounded-lg bg-[#0B0B0B]/80 border border-[#2A2A2A] text-white placeholder-[#666] focus:border-[#F5B400] focus:outline-none transition-all duration-300 hover-gold-border"
                     placeholder="What is this about?"
                   />
                 </div>

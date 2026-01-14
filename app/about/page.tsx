@@ -6,9 +6,13 @@ import Donations from "@/components/sections/donations"
 
 const AboutPage = () => {
     return (
-        <div className="min-h-screen bg-[#0B0B0B] pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-transparent pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative">
+            {/* Color accent gradients */}
+            <div className="absolute top-40 left-0 w-96 h-96 bg-gradient-to-r from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-40 right-0 w-80 h-80 bg-gradient-to-l from-purple-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
             {/* Hero Section */}
-            <div className="max-w-4xl mx-auto text-center mb-20">
+            <div className="max-w-4xl mx-auto text-center mb-20 relative z-10">
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -27,9 +31,10 @@ const AboutPage = () => {
             </div>
 
             {/* Vision Section */}
-            <section className="max-w-7xl mx-auto mb-24">
-                <div className="bg-[#141414] rounded-3xl p-8 md:p-12 border border-[#2A2A2A] relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#F5B400]/5 rounded-full blur-3xl"></div>
+            <section className="max-w-7xl mx-auto mb-24 relative z-10">
+                <div className="bg-[#141414]/70 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-[#2A2A2A] hover:border-[#F5B400]/30 transition-all relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#F5B400]/10 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl"></div>
 
                     <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-6">

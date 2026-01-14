@@ -6,15 +6,19 @@ import { Users, MessageCircle, Lightbulb, Trophy } from "lucide-react"
 const Community = () => {
 
   const stats = [
-    { icon: Users, label: "Global Members", value: "2M+" },
-    { icon: MessageCircle, label: "Daily Discussions", value: "50K+" },
-    { icon: Lightbulb, label: "Learning Resources", value: "10K+" },
-    { icon: Trophy, label: "Scholarship Givers", value: "5K+" },
+    { icon: Users, label: "Global Members", value: "2M+", color: "#F5B400" },
+    { icon: MessageCircle, label: "Daily Discussions", value: "50K+", color: "#10B981" },
+    { icon: Lightbulb, label: "Learning Resources", value: "10K+", color: "#3B82F6" },
+    { icon: Trophy, label: "Scholarship Givers", value: "5K+", color: "#A855F7" },
   ]
 
   return (
-    <section id="community" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="community" className="py-20 px-4 relative">
+      {/* Color accent gradients */}
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-l from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,13 +47,13 @@ const Community = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.8 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="text-center p-6 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] hover:border-[#F5B400]/50 transition-all cursor-pointer"
+                className="text-center p-6 bg-[#1C1C1C]/70 backdrop-blur-md rounded-xl border border-[#2A2A2A] hover:border-[#F5B400]/50 transition-all cursor-pointer group"
               >
-                <div className="w-12 h-12 gradient-gold rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 gradient-gold rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <Icon size={24} className="text-black" />
                 </div>
-                <div className="text-3xl font-bold text-[#F5B400] mb-2">{stat.value}</div>
-                <p className="text-[#B3B3B3]">{stat.label}</p>
+                <div className="text-3xl font-bold mb-2" style={{ color: stat.color }}>{stat.value}</div>
+                <p className="text-[#B3B3B3] group-hover:text-white transition-colors">{stat.label}</p>
               </motion.div>
             )
           })}

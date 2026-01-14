@@ -108,8 +108,9 @@ const Features = () => {
             const Icon = feature.icon
             return (
               <motion.div key={feature.title} variants={itemVariants} className="group relative">
-                <div
-                  className={`h-full p-6 rounded-xl border border-[#2A2A2A] bg-gradient-to-br from-[#1C1C1C] to-[#141414] hover-lift hover:border-[#F5B400] cursor-pointer overflow-hidden transition-all duration-300 relative`}
+                <a
+                  href="/features#download-app"
+                  className={`block h-full p-6 rounded-xl border border-[#2A2A2A] bg-[#1C1C1C]/70 backdrop-blur-md hover-lift hover:border-[#F5B400] cursor-pointer overflow-hidden transition-all duration-300 relative`}
                 >
                   <div
                     className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-br ${feature.color}`}
@@ -130,12 +131,7 @@ const Features = () => {
                       {feature.description}
                     </p>
 
-                    <motion.div
-                      className="mt-4 flex items-center gap-2 text-[#F5B400]"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileHover={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <div className="mt-4 flex items-center gap-2 text-[#F5B400] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="text-sm font-medium">Learn more</span>
                       <motion.span
                         animate={{ x: [0, 5, 0] }}
@@ -143,9 +139,9 @@ const Features = () => {
                       >
                         →
                       </motion.span>
-                    </motion.div>
+                    </div>
                   </div>
-                </div>
+                </a>
               </motion.div>
             )
           })}
