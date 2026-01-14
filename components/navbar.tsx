@@ -22,6 +22,8 @@ const Navbar = () => {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Features", href: "/features" },
+    { label: "Speakers", href: "/speakers" },
+    { label: "Lectures", href: "/lectures" },
     { label: "About", href: "/about" },
     { label: "Community", href: "/community" },
     { label: "Contact", href: "/contact" },
@@ -39,7 +41,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-300">
+            <div className="relative w-14 h-14 group-hover:scale-110 transition-transform duration-300">
               <Image
                 src="/logo.png"
                 alt="DeenSphere Logo"

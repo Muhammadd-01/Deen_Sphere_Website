@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
+import { MessageCircle } from "lucide-react" // WhatsApp icon
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -80,6 +81,9 @@ const Footer = () => {
               </a>
               <a href="https://youtube.com/@deensphere" target="_blank" rel="noopener noreferrer" className="text-[#B3B3B3] hover:text-[#FFD84D] transition-colors">
                 <Youtube size={20} />
+              </a>
+              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-[#B3B3B3] hover:text-[#25D366] transition-colors" title="WhatsApp: Replace with your number">
+                <MessageCircle size={20} />
               </a>
               <a href="#" className="text-[#B3B3B3] hover:text-[#FFD84D] transition-colors">
                 <Linkedin size={20} />

@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import ScrollToTop from "@/components/scroll-to-top"
+import FloatingButtons from "@/components/floating-buttons"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description: "Global Islamic Knowledge & Community Platform",
     type: "website",
   },
-    generator: 'v0.app'
+  generator: 'v0.app'
 }
 
 export const viewport: Viewport = {
@@ -45,7 +45,7 @@ export default function RootLayout({
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
-        <ScrollToTop />
+        <FloatingButtons />
         <Analytics />
       </body>
     </html>

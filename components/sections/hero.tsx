@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Zap, MessageSquare, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 const Hero = () => {
   const containerVariants = {
@@ -78,71 +79,108 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              className="px-8 py-4 gradient-gold text-black font-bold rounded-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 group"
-              whileHover={{ y: -4 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Zap size={20} />
-              Join Waitlist
-              <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
-                <ArrowRight size={20} />
-              </motion.div>
-            </motion.button>
-            <motion.button
-              className="px-8 py-4 border-2 border-[#F5B400] text-[#FFD84D] font-bold rounded-lg hover:bg-[#F5B400]/10 transition-all duration-300 flex items-center justify-center gap-2 hover-lift"
-              whileHover={{ y: -4 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <MessageSquare size={20} />
-              Explore Features
-              <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
-                <ArrowRight size={20} />
-              </motion.div>
-            </motion.button>
+            <Link href="#cta" scroll={true}>
+              <motion.button
+                className="px-8 py-4 gradient-gold text-black font-bold rounded-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 group w-full sm:w-auto"
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Zap size={20} />
+                Join Waitlist
+                <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
+                  <ArrowRight size={20} />
+                </motion.div>
+              </motion.button>
+            </Link>
+            <Link href="/features">
+              <motion.button
+                className="px-8 py-4 border-2 border-[#F5B400] text-[#FFD84D] font-bold rounded-lg hover:bg-[#F5B400]/10 transition-all duration-300 flex items-center justify-center gap-2 hover-lift w-full sm:w-auto"
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <MessageSquare size={20} />
+                Explore Features
+                <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}>
+                  <ArrowRight size={20} />
+                </motion.div>
+              </motion.button>
+            </Link>
           </motion.div>
         </motion.div>
 
-        {/* Floating Elements */}
+
+        {/* 360-Degree Sphere Animation */}
         <motion.div
-          className="mt-20 relative h-64 flex items-center justify-center"
+          className="mt-20 relative h-[400px] flex items-center justify-center"
           variants={itemVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Decorative Circles */}
-          <motion.div
-            className="absolute w-80 h-80 rounded-full border-2 border-[#F5B400]/20"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          />
-          <motion.div
-            className="absolute w-64 h-64 rounded-full border-2 border-[#F5B400]/40"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          />
-          <motion.div
-            className="absolute w-48 h-48 bg-gradient-to-br from-[#F5B400]/20 to-[#E6A800]/10 rounded-full blur-3xl"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          />
-
-          {Array.from({ length: 5 }).map((_, i) => (
+          {/* Central Sphere */}
+          <div className="relative w-64 h-64">
+            {/* Rotating Circle - Represents 360 Degrees */}
             <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-[#F5B400] rounded-full"
-              animate={{
-                x: [Math.cos((i / 5) * Math.PI * 2) * 150, Math.cos((i / 5) * Math.PI * 2) * 180],
-                y: [Math.sin((i / 5) * Math.PI * 2) * 150, Math.sin((i / 5) * Math.PI * 2) * 180],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: 4 + i,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              }}
+              className="absolute inset-0 rounded-full border-2 border-[#F5B400]/30"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
             />
-          ))}
+            <motion.div
+              className="absolute inset-4 rounded-full border-2 border-[#F5B400]/20"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            />
+
+            {/* Center Content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#F5B400]/10 to-[#E6A800]/5 rounded-full backdrop-blur-sm">
+              <div className="text-6xl font-bold text-[#F5B400]">360°</div>
+              <div className="text-sm text-white/80 mt-2">Complete Deen</div>
+            </div>
+
+            {/* Orbiting Aspect Labels - All labels rotate together */}
+            <motion.div
+              className="absolute inset-0"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            >
+              {[
+                { label: "Worship", angle: 0, color: "#F5B400" },
+                { label: "Politics", angle: 45, color: "#FFD84D" },
+                { label: "Economy", angle: 90, color: "#F5B400" },
+                { label: "History", angle: 135, color: "#FFD84D" },
+                { label: "Science", angle: 180, color: "#F5B400" },
+                { label: "Culture", angle: 225, color: "#FFD84D" },
+                { label: "Society", angle: 270, color: "#F5B400" },
+                { label: "Ethics", angle: 315, color: "#FFD84D" }
+              ].map((aspect, i) => {
+                const radius = 150
+                const x = Math.cos((aspect.angle * Math.PI) / 180) * radius
+                const y = Math.sin((aspect.angle * Math.PI) / 180) * radius
+
+                return (
+                  <motion.div
+                    key={i}
+                    className="absolute w-20 h-20 flex items-center justify-center"
+                    style={{
+                      left: `calc(50% + ${x}px)`,
+                      top: `calc(50% + ${y}px)`,
+                      transform: "translate(-50%, -50%)"
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1, rotate: -360 }}
+                    transition={{
+                      opacity: { delay: 0.5 + i * 0.1, duration: 0.5 },
+                      scale: { delay: 0.5 + i * 0.1, duration: 0.5 },
+                      rotate: { duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }
+                    }}
+                  >
+                    <div className="px-3 py-2 bg-[#1C1C1C]/80 backdrop-blur-md border border-[#2A2A2A] rounded-lg text-xs font-semibold whitespace-nowrap" style={{ color: aspect.color }}>
+                      {aspect.label}
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
