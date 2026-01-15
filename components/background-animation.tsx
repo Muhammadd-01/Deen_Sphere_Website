@@ -104,7 +104,7 @@ const BackgroundAnimation = () => {
             )}
 
             {/* Floating Stars/Dots - Guidance/Light */}
-            {[...Array(isMobile ? 8 : 15)].map((_, i) => (
+            {[...Array(isMobile ? 6 : 15)].map((_, i) => (
                 <motion.div
                     key={i}
                     className="absolute w-1.5 h-1.5 bg-[#F5B400]/20 rounded-full"

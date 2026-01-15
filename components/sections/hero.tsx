@@ -228,7 +228,7 @@ const Hero = () => {
                 { label: t("aspect.culture"), angle: 225, color: "#F59E0B" },
                 { label: t("aspect.society"), angle: 270, color: "#06B6D4" },
                 { label: t("aspect.ethics"), angle: 315, color: "#EF4444" }
-              ].filter((_, i) => !isMobile || i % 2 === 0).map((aspect, i) => {
+              ].map((aspect, i) => {
                 const radius = isMobile ? 100 : 120
                 const x = Math.cos((aspect.angle * Math.PI) / 180) * radius
                 const y = Math.sin((aspect.angle * Math.PI) / 180) * radius
